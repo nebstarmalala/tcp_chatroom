@@ -4,7 +4,7 @@ import logging
 
 
 PORT = 5050
-HOST = '127.0.0.1'
+HOST = socket.gethostbyname(socket.gethostname())
 ADDR = (HOST, PORT)
 FORMAT = 'ascii'
 
@@ -23,6 +23,11 @@ server.bind(ADDR)
 
 clients = []
 nicknames = []
+
+# # Color Handler
+# def prGreen(skk): print("\033[92m{}\033[00m".format(skk))
+# def prYellow(skk): print("\033[93m{}\033[00m".format(skk))
+# def prRed(skk): print("\033[91m{}\033[00m".format(skk))
 
 
 def broadcast(messsage):
@@ -50,10 +55,9 @@ def handle_client(addr, client):
 def main():
     while True:
         server.listen()
-        print(f"[*] server is listening on {HOST}...")
-        logger.info(f"[*] server is listening on {HOST}")
         print(f"[*] {len(clients)} clients connected")
-        logger.info(f"[*] {len(clients)} clients connected ")
+        logger.info(f"[*] {len(clients)} clients connected")
+        print(f"[*] server is listening on {HOST}...")
         client, addr = server.accept()
 
         client.send('NICK'.encode(FORMAT))
@@ -72,4 +76,6 @@ def main():
 
 print('[*] Server is starting...')
 logger.info("[*] Server is starting...")
+print(f"[*] server is listening on {HOST}...")
+logger.info(f"[*] server is listening on {HOST}")
 main()

@@ -2,7 +2,7 @@ import socket
 import threading
 
 PORT = 5050
-HOST = '127.0.0.1'
+HOST = socket.gethostbyname(socket.gethostname())
 ADDR = (HOST, PORT)
 FORMAT = 'ascii'
 
@@ -10,6 +10,9 @@ nickname = input('Input your nickname: ')
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
+
+# def server_connect():
+#     client.send('CONNECT'.encode(FORMAT))
 
 def receive():
     while True:
