@@ -1,8 +1,9 @@
 import socket
 import threading
+import config
 
 PORT = 5050
-HOST = socket.gethostbyname(socket.gethostname())
+HOST = '192.168.1.120'
 ADDR = (HOST, PORT)
 FORMAT = 'ascii'
 
