@@ -3,7 +3,7 @@ import threading
 import config
 
 PORT = 5050
-HOST = '192.168.1.120'
+HOST = config.host
 ADDR = (HOST, PORT)
 FORMAT = 'ascii'
 
